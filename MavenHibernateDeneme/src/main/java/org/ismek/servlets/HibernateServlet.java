@@ -25,14 +25,16 @@ public class HibernateServlet extends HttpServlet {
 		
 		
 		User user = new User();
-		
+		User user1 = new User();
+		user1.setName("Emre");
 		user.setName("Mehmet");
 		session.save(user);
+		session.save(user1);
 		
 		transaction.commit();
-		
+		session.clear();
 		session.close();
-		
+		System.out.println("Transaction Completed !");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
